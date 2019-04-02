@@ -1,0 +1,31 @@
+{
+  "name": "ivrswitchboardapi",
+  "version": "1.0.0",
+  "description": "M.Sc. in Computing Assignment 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/footfish/ivrswitchboardAPI.git"
+  },
+  "author": "footfish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/footfish/ivrswitchboardAPI/issues"
+  },
+  "homepage": "https://github.com/footfish/ivrswitchboardAPI#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "dotenv": "^7.0.0"
+  }
+}
