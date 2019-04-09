@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node index.js",    
-    "build": "babel index.js --out-dir build",
-    "start": "babel-node index.js"
+    "dev": "nodemon -r esm index.js",
+    "start": "node -r esm index.js"
   },
   "repository": {
     "type": "git",
@@ -20,16 +19,14 @@
   },
   "homepage": "https://github.com/footfish/ivrswitchboardAPI#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^9.0.0",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^5.12.0",
     "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^7.0.0",
+    "dotenv": "^5.0.1",
+    "esm": "^3.2.22",
     "express": "^4.16.4",
     "lodash": "^4.17.11"
   }
