@@ -1,7 +1,12 @@
-export const switchboard = [
+import Switchboard from './switchboardModel'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+dotenv.config()
+
+export const switchboardData = [
     {
-      "id": "7021a27d04454b5fa817a2c391bff69e",
-      "number": "084412314556",
+      "_id" : mongoose.Types.ObjectId.createFromHexString(process.env.SWITCHBOARD_ID),
+      "number": process.env.SWITCHBOARD_NO, 
       "routeOption": "scheduled",
       "schedule": {
         "openHours": {
@@ -180,3 +185,14 @@ export const switchboard = [
       ]
     }
   ]
+
+
+export default async function loadSwitchboards() {
+    try {
+      await Switchboard.deleteMany()
+      await  Switchboard.collection.insertMany(switchboardData)
+      console.info(`${switchboardData.length} contacts were successfully stored.`)
+    } catch (err) {
+      console.error(`failed to Load Contact Data: ${err}`)
+    }
+  }  

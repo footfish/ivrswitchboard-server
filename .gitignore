@@ -29,9 +29,6 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# production
-build
-
 # Dependency directories
 node_modules/
 jspm_packages/
