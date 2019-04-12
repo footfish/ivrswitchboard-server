@@ -22,6 +22,7 @@ const MenuSectionActionSchema = new Schema({
 
   const menuSchema = new Schema({
     none: { type: [MenuSectionActionSchema], default: undefined },
+    0: { type: [MenuSectionActionSchema], default: undefined },    
     1: { type: [MenuSectionActionSchema], default: undefined },
     2: { type: [MenuSectionActionSchema], default: undefined },
     3: { type: [MenuSectionActionSchema], default: undefined },
