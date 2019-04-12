@@ -24,12 +24,16 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "dotenv": "^5.0.1",
     "esm": "^3.2.22",
     "express": "^4.16.4",
     "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
-    "mongoose": "^5.5.0"
+    "mongoose": "^5.5.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
   }
 }

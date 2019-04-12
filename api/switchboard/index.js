@@ -8,28 +8,18 @@ const router = express.Router()
 
 router.get('/',  asyncHandler(async(req, res) => {
   try{
-    const switchboard = await Switchboard.find()
-    res.status(200).json(switchboard)
-  } catch (error) {
-      return res.status(500).send(error.message)
-  }
-}))
-
-router.get('/:id',  asyncHandler(async(req, res) => {
-  try{
-    const switchboard = await Switchboard.findById(req.params.id)
+    const switchboard = await Switchboard.findById(req.user.switchboard_id) //switchboard_id from auth result
     if (switchboard) return res.status(200).json(switchboard)
     else return res.sendStatus(404)
   } catch (error) {
     return res.status(400).send(error.message)
   }
-
 }))
 
 
-router.patch('/:id', asyncHandler(async(req, res) => {
+router.patch('/', asyncHandler(async(req, res) => {
   try{
-      const switchboard = await Switchboard.findOneAndUpdate({ _id: req.params.id }, req.body, {new: true, runValidators: true})
+      const switchboard = await Switchboard.findOneAndUpdate({ _id: req.user.switchboard_id }, req.body, {new: true, runValidators: true})
       if (switchboard)  res.status(200).json(switchboard)
       else return res.sendStatus(404)
   } catch (error) {

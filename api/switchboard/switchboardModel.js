@@ -13,11 +13,11 @@ const MenuSectionActionSchema = new Schema({
               required: true, 
               enum:["voicemailToEmail", "notifyEmail", "forwardToNumber", "forwardToNumberWhisper", "forwardToNumberConfirm", "analytics", "backToMenu", "playRecording"]
             },
-    email: String, //add  match 
-    label: String, //add  match 
-    number: String, //add  match 
-    ringTimer: Number, //add min max 
-    recordingId: Number
+    email: {type: String, match: RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$') },
+    label: {type: String, match: RegExp('^[a-zA-Z0-9_-]{1,50}$')},
+    number: {type: String, match: RegExp('^0[1-9][0-9]{7,15}')},
+    ringTimer: {type: Number, min: 5, max: 300},
+    recordingId: {type: Number, min: 0, max: 30},
   },{ _id : false })
 
   const menuSchema = new Schema({
@@ -90,10 +90,11 @@ const MenuSectionActionSchema = new Schema({
             }
 )
   
-//SwitchboardSchema.methods.toJSON modifies return Json 
+//custom toJSON filters returned Json 
 SwitchboardSchema.methods.toJSON = function() {
     var obj = this.toObject()
     delete obj._id //remove _id 
+    delete obj.__v //remove versioning    
     return {switchboard: obj} //wrap in switchboard object 
    }
 
