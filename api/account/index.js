@@ -24,7 +24,7 @@ router.post('/', asyncHandler(async (req, res) => {
   if (!account)   return res.sendStatus(401) //Unauthorised: Account not found 
   account.comparePassword(req.body.password, (err, isMatch) => {
      if (isMatch && !err) {
-       const token = jwt.sign( { email: account.email} , process.env.JWT_SECRET, { expiresIn: '1h' })
+       const token = jwt.sign( { sub: account.email} , process.env.JWT_SECRET, { expiresIn: '1h' })
        res.status(200).json({access_token: 'Bearer ' + token});        // success - return JWT
      } else {
        return res.sendStatus(401) //Email-password mismatch 
