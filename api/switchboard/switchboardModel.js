@@ -95,7 +95,7 @@ SwitchboardSchema.methods.toJSON = function() {
     var obj = this.toObject()
     delete obj._id //remove _id 
     delete obj.__v //remove versioning    
-    return {switchboard: obj} //wrap in switchboard object 
+    return obj 
    }
 
 export default mongoose.model('Switchboard', SwitchboardSchema);
