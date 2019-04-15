@@ -1,12 +1,10 @@
 import Switchboard from './switchboardModel'
 import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-dotenv.config()
 
 export const switchboardData = [
     {
-      "_id" : mongoose.Types.ObjectId.createFromHexString(process.env.SWITCHBOARD_ID),
-      "number": process.env.SWITCHBOARD_NO, 
+      "_id" : mongoose.Types.ObjectId.createFromHexString("5cae015a43d39288f07583f5"),
+      "number": "0123456789", 
       "routeOption": "scheduled",
       "schedule": {
         "openHours": {
