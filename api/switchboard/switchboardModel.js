@@ -38,7 +38,7 @@ const MenuSectionActionSchema = new Schema({
 
 
   const SwitchboardSchema = new Schema({
-    _id        : mongoose.Types.ObjectId,
+    //_id        : mongoose.Types.ObjectId,
     number: {
         type: String,
         required: true,

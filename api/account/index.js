@@ -1,36 +1,33 @@
 import express from 'express'
 import Account from './accountModel'
+import {newSwitchboard} from '../../api/switchboard/switchboardData'
+import {newAccount} from './accountData';
+
 import asyncHandler from 'express-async-handler'
 import jwt from 'jsonwebtoken'
 
 const router = express.Router()
 
-// Create/Login account 
-router.post('/', asyncHandler(async (req, res) => {
- if (!req.body.email || !req.body.password) {  //check all fields are present  
-   res.status(400).send('Email and password required.')
- }
+//get account details (model filtered with .toPublic())
+router.get('/',  asyncHandler(async(req, res) => {
+  try{
+    const account = await Account.findById(req.user._id) //_id from auth result
+    if (account) return res.status(200).json(account.toPublic())
+    else return res.sendStatus(404)
+  } catch (error) {
+    return res.status(400).send(error.message)
+  }
+}))
 
- if (req.query.action === 'create') { // Process account creation attempt 
-    const newUser = new Account({
-      email: req.body.email,
-      password: req.body.password,
-     }) 
-    //note: need to add switchboard creation here  
-    await newUser.save() 
-    res.status(201).send('Created new account')
- } else {                             // Process account login attempt 
-  const account = await Account.findByEmail(req.body.email)
-  if (!account)   return res.sendStatus(401) //Unauthorised: Account not found 
-  account.comparePassword(req.body.password, (err, isMatch) => {
-     if (isMatch && !err) {
-       const token = jwt.sign( { sub: account.email} , process.env.JWT_SECRET, { expiresIn: '1h' })
-       res.status(200).json({access_token: 'Bearer ' + token});        // success - return JWT
-     } else {
-       return res.sendStatus(401) //Email-password mismatch 
-     }
-   })
-}
+//close account (email rename which expires JWT)
+router.delete('/',  asyncHandler(async(req, res) => {
+  try{
+    const result = await Account.updateOne({ _id: req.user._id }, {email: 'CLOSED@'+Date.now(), email_onclose: req.user.email} )
+    if (result.n === 1) return res.sendStatus(200)
+    else return res.sendStatus(404)
+  } catch (error) {
+    return res.status(400).send(error.message)
+  }
 }))
 
 export default router
