@@ -1,10 +1,7 @@
 import express from 'express'
 import Account from './accountModel'
-import {newSwitchboard} from '../../api/switchboard/switchboardData'
-import {newAccount} from './accountData';
 
 import asyncHandler from 'express-async-handler'
-import jwt from 'jsonwebtoken'
 
 const router = express.Router()
 
