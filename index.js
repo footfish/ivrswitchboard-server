@@ -38,8 +38,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth', authRouter)
 app.use('/api/e164', e164Router)
-app.use('/api/recording', recordingRouter)
 app.use('/api/account', registerRouter) //no auth on register 
+app.use('/api/recording', recordingRouter)
+//app.use('/api/recording', passport.authenticate('jwt', {session: false}), recordingRouter)
 app.use('/api/account', passport.authenticate('jwt', {session: false}), accountRouter)
 app.use('/api/switchboard', passport.authenticate('jwt', {session: false}), switchboardRouter)
 
