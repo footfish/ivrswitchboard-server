@@ -87,15 +87,17 @@ const MenuSectionActionSchema = new Schema({
             },
             menu: menuSchema
         },
-            recordings: [{ label: String, src: String }]            
+            recordings: [{ label: String, src: String, _id : false}],
+            recordingFiles: [String]            
             }
-)
+            )
   
 //custom toJSON filters returned Json 
 SwitchboardSchema.methods.toJSON = function() {
     var obj = this.toObject()
     delete obj._id //remove _id 
     delete obj.__v //remove versioning    
+    delete obj.recordingFiles //recording filenames are internal
     return obj 
    }
 

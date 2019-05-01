@@ -1,5 +1,5 @@
 import express from 'express'
-import Account from '../../api/account/accountModel'
+import Account from '../model/accountModel'
 
 import asyncHandler from 'express-async-handler'
 import jwt from 'jsonwebtoken'

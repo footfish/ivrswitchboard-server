@@ -11,7 +11,7 @@ M.Sc. in Computing Assignment 2
 | /api/account?action=register   |  N   |                    | sign up    |                      |                 |
 | /api/account                   |  Y   | read account       |            | update account       | close account   |
 | /api/switchboard               |  Y   | read switchboard   |            | update switchboard   |                 |
-| /api/recording                 |  Y   | /:fileName stream  | upload     |                      |                 |
+| /api/recording/:index          |  Y   | /:index stream     | upload     |                      |                 |
 | /api/paymethod                 |  Y   | read cc/pay inf.   |            | update cc/pay  info. |                 |
 | /api/billing                   |  Y   | read billing inf.  |            | update billing info. |                 |
 

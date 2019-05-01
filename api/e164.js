@@ -1,11 +1,9 @@
 import express from 'express'
-import asyncHandler from 'express-async-handler'
-import E164 from './e164Model'
-
+import E164 from '../model/e164Model'
 
 const router = express.Router()
 
-router.get('/',  asyncHandler(async(req, res) => {
+router.get('/',  async(req, res) => {
   if (! RegExp('^[1-9][0-9]{0,2}$').test(req.query.cc) || ! RegExp('^[1-9][0-9]{0,4}$').test(req.query.ndc)) {
     res.status(400).send('query fields not present or incomplete')
   } else try{
@@ -16,9 +14,7 @@ router.get('/',  asyncHandler(async(req, res) => {
   } catch (error) {
     return res.status(400).send(error.message)
   }
-
-
-}))
+})
 
 
 export default router

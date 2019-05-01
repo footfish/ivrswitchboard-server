@@ -1,6 +1,6 @@
 import express from 'express'
-import {newSwitchboard} from '../../api/switchboard/switchboardData'
-import {newAccount} from '../../api/account/accountData'
+import {newSwitchboard} from '../model/switchboardData'
+import {newAccount} from '../model/accountData'
 import asyncHandler from 'express-async-handler'
 
 const router = express.Router()
