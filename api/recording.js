@@ -31,7 +31,7 @@ router.post('/:index', async(req, res) => {
             for(let n = switchboard.recordings.length; n<=req.params.index; n++  ) switchboard.recordings.push({})
         }
         switchboard.recordings[req.params.index].label = req.body.recordinglabel //Store label
-        switchboard.recordings[req.params.index].src = req.file.originalname //Store original filename 
+        switchboard.recordings[req.params.index].src = '/api/recording/'+req.params.index //Store original filename 
         switchboard.save()
         return res.sendStatus(200)
     } catch (err) {
