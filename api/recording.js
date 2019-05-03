@@ -6,8 +6,8 @@ import util from 'util'
 import {dbConnection, recordingsBucket} from '../lib/db'
 
 const MAX_RECORDINGS = 30
-const MIME_TYPES=['audio/wave','audio/mp3','audio/wav','audio/mpeg']
-
+//const MIME_TYPES=['audio/wave','audio/mp3','audio/wav','audio/mpeg']
+const MIME_TYPES=['audio/mp3','audio/mpeg'] //UI supports mp3 only 
 const router = express.Router()
 
 const audioFileFilter = (req, file, cb) => { //filter for upload of supported audio file mime types 
