@@ -1,6 +1,5 @@
 import dotenv from 'dotenv'
 import express from 'express'
-import path from 'path'
 import switchboardRouter from './api/switchboard'
 import registerRouter from './api/register'
 import recordingRouter from './api/recording'
@@ -46,8 +45,7 @@ app.use('/api/recording', passport.authenticate('jwt', {session: false}), record
 app.use('/api/account', passport.authenticate('jwt', {session: false}), accountRouter)
 app.use('/api/switchboard', passport.authenticate('jwt', {session: false}), switchboardRouter)
 app.get('/*', function (req, res) { //needed to preserve browser refresh because client is using router 
-  res.sendFile("/app/client/build/index.html")
-   //res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+  res.sendFile("/app/client/build/index.html") //heroku specific 
 })
 
 app.listen(port, () => {
