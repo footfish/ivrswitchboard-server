@@ -45,8 +45,8 @@ app.use('/api/account', registerRouter) //no auth on register
 app.use('/api/recording', passport.authenticate('jwt', {session: false}), recordingRouter)
 app.use('/api/account', passport.authenticate('jwt', {session: false}), accountRouter)
 app.use('/api/switchboard', passport.authenticate('jwt', {session: false}), switchboardRouter)
-app.get('/*', function (req, res) { //needed to preserve urls because client is using router 
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('/*', function (req, res) { //needed to preserve browser refresh because client is using router 
+   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 })
 
 app.listen(port, () => {
