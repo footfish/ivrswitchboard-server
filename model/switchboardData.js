@@ -45,9 +45,8 @@ export async function newSwitchboard(number) {
       },
     },
     "recordings": [
-      { "label": "Recording 1", "src": "recording1.mp3" },
-      { "label": "Recording 2", "src": "recording2.mp3" },
-      { "label": "Recording 3", "src": "recording3.mp3" }
+      { "label": "Sample - replace this", "src": "/default_recordings/welcome.mp3" },
+      { "label": "Sample - line busy", "src": "/default_recordings/line_busy.mp3" },
     ]
   }
  
