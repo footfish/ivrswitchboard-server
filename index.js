@@ -1,12 +1,14 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import path from 'path'
 import switchboardRouter from './api/switchboard'
 import registerRouter from './api/register'
 import recordingRouter from './api/recording'
 import authRouter from './api/auth'
 import accountRouter from './api/account'
 import e164Router from './api/e164'
-import passport from './lib/auth';
+import passport from './lib/auth'
+
 
 import {newSwitchboard,clearAllSwitchboards} from './model/switchboardData'
 import {newAccount, clearAllAccounts} from './model/accountData';
@@ -43,7 +45,9 @@ app.use('/api/account', registerRouter) //no auth on register
 app.use('/api/recording', passport.authenticate('jwt', {session: false}), recordingRouter)
 app.use('/api/account', passport.authenticate('jwt', {session: false}), accountRouter)
 app.use('/api/switchboard', passport.authenticate('jwt', {session: false}), switchboardRouter)
-
+app.get('/*', function (req, res) { //needed to preserve urls because client is using router 
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
 
 app.listen(port, () => {
   console.info(`Server running at ${port}`)
