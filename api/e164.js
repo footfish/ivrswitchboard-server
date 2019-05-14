@@ -8,8 +8,8 @@ router.get('/',  async(req, res) => {
     res.status(400).send('query fields not present or incomplete')
   } else try{
 
-    const e164 = await E164.findRandom20(req.query.cc,req.query.ndc)
-    if (e164) return res.status(200).json(e164)
+    const e164List = await E164.findRandom20(req.query.cc,req.query.ndc)
+    if (e164List) return res.status(200).json({e164: e164List})
     else return res.sendStatus(404)
   } catch (error) {
     return res.status(400).send(error.message)

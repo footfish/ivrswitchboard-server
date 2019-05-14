@@ -13,9 +13,9 @@ const E164Schema = new Schema({
 
 E164Schema.statics.findRandom20 = function(cc, ndc) {
     return this.aggregate([
-        {$match:{ cc: cc, ndc: ndc, used: {$eq: false}}},
-        {$project:{ '_id': 0, 'number' :1}}
-      ]).sample(20)
+      {$match:{ cc: cc, ndc: ndc, used: {$eq: false}}},
+      {$project:{ '_id': 0, 'number' :1}}
+    ]).sample(20)
   }
 
 
