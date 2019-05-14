@@ -9,11 +9,11 @@ const router = express.Router()
 router.post('/', asyncHandler(async (req, res, next) => {
   if (req.query.action === 'register')  
     {
-     if (!req.body.email || !req.body.password || !req.body.first_name || !req.body.second_name || !req.body.mobile_number || ! req.body.switchboard_number) {  //check all fields are present  
-       res.status(400).send('fields not present or incomplete')
+     if (!req.body.email || !req.body.password || !req.body.first_name || !req.body.last_name || !req.body.mobile_number || ! req.body.switchboard_number) {  //check all fields are present  
+       res.status(400).send('required fields not present or incomplete')
      } else try {
       const newSwitchboardId = await newSwitchboard(req.body.switchboard_number) 
-      await newAccount( req.body.email, req.body.password, req.body.first_name, req.body.second_name, req.body.mobile_number, newSwitchboardId)
+      await newAccount( req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.mobile_number, newSwitchboardId)
       res.status(201).send('Created new account')
      } catch(error) {
       console.log(error)
