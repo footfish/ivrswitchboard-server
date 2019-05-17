@@ -1,18 +1,10 @@
 import supertest from 'supertest'
 import {expect} from 'chai'
 import 'chai/register-should'
-import {app, server} from '../index.js'
-import mongoose from 'mongoose'
+import {app} from '../index.js'
 
+let token
 
-before( function(done){
-    this.timeout(120000)
-    app.on('testDataReady', () => { //make sure db is ready with test data 
-        done();
-    })
-})
-
-// UNIT test begin
 describe('Auth API test', function(){
     this.timeout(120000)
     // test #1: _
@@ -26,11 +18,24 @@ describe('Auth API test', function(){
             .expect('Content-type', /json/)
             .then(res => {
                 expect(res.statusCode).to.equal(200)
-                res.body.should.have.property('access_token').with.lengthOf(167)
+                res.body.should.have.property('access_token').that.is.a('string').to.include('Bearer')
+                token = res.body.access_token
                 done()
             }).catch( err => done(err))
     })
     // test #2: 
+    it('Read  account - Should return 200 with account object', (done) => {
+        supertest(app)
+            .get('/api/account')
+            .set('Authorization', token)
+            .expect('Content-type', /json/)
+            .then(res => {
+                expect(res.statusCode).to.equal(200)
+                expect(res.body).to.deep.include({ email: 'dummy@email.com'})
+                done()
+            }).catch( err => done(err))
+    })
+    // test #3: 
     it('Test wrong password - should return 401 Unauthorized', (done) => {
             supertest(app)
                 .post('/api/auth')
@@ -46,7 +51,7 @@ describe('Auth API test', function(){
                     done()
                 }).catch( err => done(err))
             })
-    // test #3: 
+    // test #4: 
     it('Test unknown email address - should return 401 Unauthorized', (done) => {
         supertest(app)
             .post('/api/auth')
@@ -62,7 +67,7 @@ describe('Auth API test', function(){
                 done()
             }).catch( err => done(err))
         })
-    // test #4: 
+    // test #5: 
     it('Test missing email parameter - should be 400 Bad Request', (done) => {
         supertest(app)
             .post('/api/auth')
@@ -76,7 +81,7 @@ describe('Auth API test', function(){
                 done()
             }).catch( err => done(err))
         })
-    // test #5: 
+    // test #6: 
     it('Test missing password parameter - should be 400 Bad Request', (done) =>  {
         supertest(app)
             .post('/api/auth')
@@ -90,11 +95,4 @@ describe('Auth API test', function(){
                 done()
             }).catch( err => done(err))
         })
-})
-
-after(function (done) {    //gracefull end to tests
-    server.close()
-    mongoose.connection.close()
-    console.log("finished tests. Closed server and database")
-    done()
 })

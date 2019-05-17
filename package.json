@@ -4,7 +4,7 @@
   "description": "M.Sc. in Computing Assignment 2",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha --require esm  --reporter mochawesome || true",
+    "test": "cross-env NODE_ENV=test mocha test/tests.js --require esm  --reporter mochawesome || true",
     "coverage": "nyc --all npm run test",
     "dev": "nodemon server.js",
     "start": "node server.js"
