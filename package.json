@@ -4,7 +4,8 @@
   "description": "M.Sc. in Computing Assignment 2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test mocha --require esm  --reporter mochawesome || true",
+    "coverage": "nyc --all npm run test",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
@@ -19,9 +20,15 @@
   },
   "homepage": "https://github.com/footfish/ivrswitchboardAPI#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.12.0",
     "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "mocha": "^6.1.4",
+    "mochawesome": "^3.1.2",
+    "nodemon": "^1.18.10",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

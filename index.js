@@ -20,7 +20,7 @@ import {dbConnection} from './lib/db'
 
 dotenv.config()
 
-const app = express()
+export const app = express()
 const port = process.env.PORT
 
 
@@ -30,6 +30,7 @@ if (process.env.seedDb) { //dev only
   .then( () => newSwitchboard('0123456789') )
   .then( newSwitchboardId => newAccount( 'dummy@email.com', 'dummy', 'John', 'Doe', '0123456789', newSwitchboardId))
   .then( () => loadE164s())
+  .then( () => app.emit('testDataReady') ) //tell supertest db is ready 
   .catch( err => console.log(err))
  }
 
@@ -48,7 +49,5 @@ app.get('/*', function (req, res) { //needed to preserve browser refresh because
   res.sendFile("/app/client/build/index.html") //heroku specific 
 })
 
-app.listen(port, () => {
-  console.info(`Server running at ${port}`)
-})
+export const server = app.listen(port, () => {  console.info(`Server running at ${port}`)})
 
