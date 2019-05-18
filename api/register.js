@@ -19,7 +19,6 @@ router.post('/', asyncHandler(async (req, res, next) => {
       await newAccount( req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.mobile_number, newSwitchboardId)
       res.status(201).send('Created new account')
      } catch(error) {
-      console.log(error)
       res.status(500).send(`There has been a problem creating that account. ${error}`) //error adding account 
      }
   } else

@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 
 import './testAuthApi'
 import './testRegisterApi'
+import './testSwitchboardApi'
 
 before( function(done){
     this.timeout(120000)

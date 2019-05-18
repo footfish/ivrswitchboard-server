@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test mocha test/tests.js --require esm  --reporter mochawesome || true",
-    "coverage": "nyc --all npm run test",
+    "coverage": "nyc --reporter=lcov --reporter=text-summary --all npm run test",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
