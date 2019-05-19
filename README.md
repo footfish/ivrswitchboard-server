@@ -25,24 +25,24 @@ Clone this repo locally. Then run `npm install` to install all required dependen
 ### Configuration 
 The server is configured using environmental variables. You will need to create a `.env` file in the servers root folder to set these.
 
-``
+```
 NODE_ENV=development
 PORT=8080
 HOST=localhost
 MONGODB_URI=${Put your mongo db here}
 seedDb=true
 JWT_SECRET=${Put your secret here}
-``
+```
 
 ### Running Server
 Run the server in development mode (seeds database, runs nodemon so restarts with file changes)
-``
+```
 npm run dev 
-``
+```
 Run the server normal mode 
-``
+```
 npm start
-``
+```
 
 ## API Design
 
@@ -65,12 +65,14 @@ The JWT can be passed as in the *Authorization header* or as a *query string* . 
 ## Testing 
 Testing is performed against api using supertest & mocha (mix of expect and should). Pretty formatting with mochawsome. Coverage with nyc. File upload/download test is included. Express emit is used to ensure db is ready. 
 
-To run tests 
-``
+To run tests;
+```
 npm run test
-``
-Example output 
-``
+```
+
+Test output;
+
+```
 Starting tests. Db data ready.
   Auth API test
     √ Successful login - auth should return 200 with bearer token (508ms)
@@ -102,7 +104,7 @@ Starting tests. Db data ready.
 finished tests. Closed server and database.
 
   21 passing (11s)
-``
+```
 
 
 
