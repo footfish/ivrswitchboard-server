@@ -107,6 +107,7 @@ finished tests. Closed server and database.
 ```
 ## Extra features
 -  Gridfs file streaming upload/download
+-  No babel (uses ECMAScript module loader) 
 
 
 ## References 
