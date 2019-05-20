@@ -5,12 +5,12 @@ Name: Kevin Brennan
 
 ## Web API Endpoint Reference
 The server web api provides an interface for;
-- 164 phone number selection (select on account registration form)
-- login/authentication using Java Web Tokens 
-- account registration (includes number reservation)
-- account closure 
-- reading and update of switchboard 
-- upload and streaming of audio files (from mongo db) 
+- Phone number (e164) selection (selected on new account registration form)
+- Login/authentication using Java Web Tokens 
+- Account registration (includes number reservation) & Closure
+- Read of account details
+- Read and update of switchboard 
+- Upload and streaming of audio files (from mongo db) 
 
 ## Web API Install and Operation
 Below are installation instructions for api server (only). 
@@ -105,6 +105,35 @@ finished tests. Closed server and database.
 
   21 passing (11s)
 ```
+
+## References 
+Deploying a React app with React-Router and an Express Backend - https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3  
+How to Setup React and Node JS in a project - https://www.codementor.io/kakarganpat/how-to-setup-react-and-node-js-in-a-project-koxwqbssl  
+Let’s build a full stack MongoDB, React, Node and Express (MERN) app - https://medium.com/javascript-in-plain-english/full-stack-mongodb-react-node-js-express-js-in-one-simple-app-6cc8ed6de274  
+Using Async Await in Express with Node 11 - https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016   
+express guide - http://expressjs.com/en/guide/routing.html  
+https://www.npmjs.com/package/esm  
+multer - https://www.npmjs.com/package/multer  
+Multer's GridFS storage engine - https://www.npmjs.com/package/multer-gridfs-storage  
+Uploading and retrieving a file from GridFS using Multer - https://medium.com/@kavitanambissan/uploading-and-retrieving-a-file-from-gridfs-using-multer-958dfc9255e8  
+gridfs-stream - https://www.npmjs.com/package/gridfs-stream *outdated, switched to mongoose-gridfs*  
+mongoose-gridfs - https://www.npmjs.com/package/mongoose-gridfs  
+gridfs API mongoose-gridfs/DOCUMENTATION.md https://github.com/lykmapipo/mongoose-gridfs/blob/5163078944be05652946339e8d05d4b233fb2217/DOCUMENTATION.md   
+Node.js Streams: Everything you need to know - https://medium.freecodecamp.org/node-js-streams-everything-you-need-to-know-c9141306be93  
+Uploading files/images to MongoDB using GridFS - https://blog.zairza.in/uploading-files-images-to-mongodb-using-gridfs-c16f4eba777   
+Uploading/Streaming Audio using NodeJS + Express + MongoDB/GridFS - https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f   
+Node.js: Multer upload with promise? - https://stackoverflow.com/questions/45540560/node-js-multer-upload-with-promise  
+(MongoDB) The GridFS API - http://mongodb.github.io/node-mongodb-native/2.1/tutorials/gridfs/streaming/ *not used, but would be good alternative to implement directly*   
+Mocha test framework - https://mochajs.org     
+Chai Assertion Library - https://www.chaijs.com/    
+Supertest - https://www.npmjs.com/package/supertest    
+Testing native ES modules using Mocha and esm - https://alxgbsn.co.uk/2019/02/22/testing-native-es-modules-mocha-esm/   
+Waiting for DB connections before app-listen in node.- https://blog.cloudboost.io/waiting-for-db-connections-before-app-listen-in-node-f568af8b9ec9    
+Ensure Express App has started before running Mocha/Supertest tests - https://mrvautin.com/ensure-express-app-started-before-tests/   
+Deploying - https://facebook.github.io/create-react-app/docs/deployment   
+
+
+
 
 
 
