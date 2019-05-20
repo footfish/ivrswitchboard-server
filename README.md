@@ -51,11 +51,11 @@ npm start
 | /api/e164?cc=353&ndc=818       |  N   | find 20 numbers    |            |                      |                 |
 | /api/auth                      |  N   |                    | jwt (login)|                      |                 |
 | /api/account?action=register   |  N   |                    | sign up    |                      |                 |
-| /api/account                   |  Y   | read account       |            | (update account)**   | close account   |
+| /api/account                   |  Y   | read account       |            | *update account* **  | close account   |
 | /api/switchboard               |  Y   | read switchboard   |            | update switchboard   |                 |
 | /api/recording/:index          |  Y   | stream             | upload     |                      |                 |
-| (/api/paymethod)**             |  Y   | read cc/pay inf.   |            | update cc/pay  info. |                 |
-| (/api/billing)**               |  Y   | read billing inf.  |            | update billing info. |                 |
+| */api/paymethod* **            |  Y   | read cc/pay inf.   |            | update cc/pay  info. |                 |
+| */api/billing* **              |  Y   | read billing inf.  |            | update billing info. |                 |
 **NOT IMPLEMENTED
 
 ## Security and Authentication
@@ -105,6 +105,9 @@ finished tests. Closed server and database.
 
   21 passing (11s)
 ```
+## Extra features
+-  Gridfs file streaming upload/download
+
 
 ## References 
 Deploying a React app with React-Router and an Express Backend - https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3  
@@ -131,9 +134,5 @@ Testing native ES modules using Mocha and esm - https://alxgbsn.co.uk/2019/02/22
 Waiting for DB connections before app-listen in node.- https://blog.cloudboost.io/waiting-for-db-connections-before-app-listen-in-node-f568af8b9ec9    
 Ensure Express App has started before running Mocha/Supertest tests - https://mrvautin.com/ensure-express-app-started-before-tests/   
 Deploying - https://facebook.github.io/create-react-app/docs/deployment   
-
-
-
-
 
 
